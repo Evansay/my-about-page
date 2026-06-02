@@ -16,6 +16,7 @@
         ol, ul { padding-left: 20px; }
         li { margin-bottom: 10px; font-size: 14px; }
         .card { background: #f0f5ff; padding: 15px; border-radius: 8px; border-left: 4px solid #1890ff; margin: 15px 0; }
+        .recharge-card { background: #fffbe6; padding: 15px; border-radius: 8px; border: 1px solid #ffe58f; border-left: 4px solid #fa8c16; margin: 20px 0; }
         .code-block { background: #2d3748; color: #f7fafc; padding: 12px; border-radius: 6px; font-family: monospace; font-size: 13px; margin: 8px 0; }
     </style>
 </head>
@@ -57,7 +58,7 @@
         <li>点击展开 <strong>“更多设置”</strong>：将“自定义接口地址”修改为：<code>https://api.totp.com.cn/v1/chat/completions</code>（注：沉浸式翻译需精细到完整的聊天路径）。</li>
     </ul>
 
-    <h2>三、硬核编程/写代码客户端配置（重点）</h2>
+    <h2>三、硬核编程/写代码客户端配置</h2>
 
     <h3>1. Cursor (最火的 AI 代码编辑器)</h3>
     <ul>
@@ -99,18 +100,24 @@
     <ul>
         <li>在任何支持自定义 Codex 或 OpenAI 规范的插件中，<strong>Provider / 服务商</strong> 均统一选择：<code>OpenAI</code>。</li>
         <li><strong>Base URL / API URL</strong> 统一填写：<code>https://api.totp.com.cn/v1</code></li>
-        <li>由于本站完美兼容 OpenAI 的代码补全接口规范（Completion & Chat），任何开发插件都可以无缝接入，国内免代理享受超低延迟的代码生成体验。</li>
     </ul>
 
     <h2>四、关于计费与充值</h2>
     <ul>
         <li>本站采用极其透明的 Token 计费模式，您每次在聊天、写代码、或者让 AI 解释报错时发送和接收的文本都会被折算为算力额度。</li>
         <li>您可以随时在系统的 <strong>[日志]</strong> 页面查看自己每一笔对话或代码生成的精确扣费金额。</li>
-        <li>如需充值，请前往 <strong>[充值]</strong> 页面通过在线支付获取，或者直接联系站长索取充值兑换码。</li>
     </ul>
 
+    <!-- 充值联系方式专属高亮区块 -->
+    <div class="recharge-card">
+        <strong style="color: #d46b08; font-size: 16px; display: block; margin-bottom: 5px;">💳 账户充值与额度获取方式：</strong>
+        1. 您可以前往系统的 <strong>[充值]</strong> 页面通过在线通道获取。<br>
+        2. 如需人工获取充值兑换码、大额定制或有任何使用疑问，请随时通过邮件联系站长。<br>
+        📩 <strong>站长专属充值联系邮箱：</strong><a href="mailto:1007863673@qq.com" style="color: #1890ff; text-decoration: none; font-weight: bold;">1007863673@qq.com</a>
+    </div>
+
     <div style="text-align: center; color: #999; font-size: 12px; margin-top: 5px; border-top: 1px dashed #eee; padding-top: 15px;">
-        TOTP 技术支持团队 © 2026 | 您的智能 AI 枢纽
+        TOTP 技术支持团队 © 2026 | 您的智能 AI 枢纽 | 联系站长: <a href="mailto:1007863673@qq.com" style="color: #999; text-decoration: underline;">1007863673@qq.com</a>
     </div>
 </div>
 
