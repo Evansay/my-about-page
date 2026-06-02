@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOTP API 详细使用说明文档</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f7f9fa; }
+        .container { background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        h1 { color: #1890ff; font-size: 26px; border-bottom: 2px solid #e8e8e8; padding-bottom: 10px; margin-top: 0; }
+        h2 { color: #2f54eb; font-size: 20px; margin-top: 30px; padding-bottom: 5px; border-bottom: 1px solid #f0f0f0; }
+        h3 { color: #555; font-size: 16px; margin-top: 20px; background-color: #f6f8fa; padding: 5px 10px; border-radius: 4px; border-left: 3px solid #722ed1; }
+        code { background: #fff5f5; color: #ff4d4f; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 14px; }
+        pre { background: #f6f8fa; padding: 15px; border-radius: 8px; border: 1px solid #e1e4e8; overflow-x: auto; }
+        pre code { background: none; color: #444; padding: 0; }
+        ol, ul { padding-left: 20px; }
+        li { margin-bottom: 10px; font-size: 14px; }
+        .card { background: #f0f5ff; padding: 15px; border-radius: 8px; border-left: 4px solid #1890ff; margin: 15px 0; }
+        .code-block { background: #2d3748; color: #f7fafc; padding: 12px; border-radius: 6px; font-family: monospace; font-size: 13px; margin: 8px 0; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>📘 TOTP API 官方使用说明文档</h1>
+    <p style="color: #666; font-size: 14px;">欢迎使用内部大模型中转加速服务。本站提供国内免 VPN 直连海外顶级 AI 算力的通路。请参照以下指南快速在常用客户端及主流编程软件中进行配置。</p>
+
+    <div class="card">
+        <strong>🔑 通用核心配置参数（请牢记）：</strong><br>
+        • API 接口地址 (Base URL): <code>https://api.totp.com.cn/v1</code><br>
+        • API Key (密钥): 填写您在系统后台自己生成的专属令牌 (sk-xxxx)
+    </div>
+
+    <h2>一、如何获取你自己的 API Key？</h2>
+    <ol>
+        <li>打开网站 <code>https://api.totp.com.cn</code> 并登录您的账户。</li>
+        <li>点击左侧菜单栏的 <strong>[令牌] (Tokens)</strong>。</li>
+        <li>点击右上角的 <strong>[添加新的令牌]</strong>，名称随意填写。</li>
+        <li>在额度一栏，可以设为不设限，或者给自己设定一个封顶额度。点击提交。</li>
+        <li>在令牌列表中，点击刚刚生成的令牌右侧的 <strong>[复制]</strong> 按钮，获取以 <code>sk-</code> 开头的长密钥并妥善保管。</li>
+    </ol>
+
+    <h2>二、主流对话及翻译客户端配置</h2>
+
+    <h3>1. Chatbox (电脑端/网页端推荐)</h3>
+    <ul>
+        <li><strong>模型提供方</strong>：选择 <strong>OpenAI API</strong>（不要选 OpenRouter，我们要走本站中转路线）。</li>
+        <li><strong>API 密钥 (API Key)</strong>：粘贴您的 <code>sk-xxxx</code> 令牌。</li>
+        <li><strong>API 代理/自定义域名 (Base URL)</strong>：填写 <code>https://api.totp.com.cn/v1</code></li>
+        <li><strong>模型</strong>：手动选择或填写您在后台拥有的模型名称（如 <code>gpt-4o</code>、<code>claude-3-5-sonnet</code>）。</li>
+    </ul>
+
+    <h3>2. 沉浸式翻译 (浏览器双语对照插件)</h3>
+    <ul>
+        <li><strong>翻译服务</strong>：选择 <strong>OpenAI</strong>。</li>
+        <li><strong>API Key</strong>：输入您的中转令牌。</li>
+        <li>点击展开 <strong>“更多设置”</strong>：将“自定义接口地址”修改为：<code>https://api.totp.com.cn/v1/chat/completions</code>（注：沉浸式翻译需精细到完整的聊天路径）。</li>
+    </ul>
+
+    <h2>三、硬核编程/写代码客户端配置（重点）</h2>
+
+    <h3>1. Cursor (最火的 AI 代码编辑器)</h3>
+    <ul>
+        <li><strong>第一步</strong>：打开 Cursor，点击右上角的 <strong>“齿轮” (Settings)</strong> 进入设置。</li>
+        <li><strong>第二步</strong>：在左侧选择 <strong>“Models”</strong> 标签页。</li>
+        <li><strong>第三步</strong>：向下翻找到 <strong>“OpenAI API”</strong> 区域，将其展开：
+            <ul>
+                <li>点击打开 <strong>“Change API Key”</strong>，将输入框里的官方 Key 删掉，填入您的本站专属 <code>sk-xxxx</code> 令牌。</li>
+                <li>点击下方的 <strong>“Override OpenAI Base URL”</strong>（覆盖默认地址），在弹出的输入框里精准填入：<code>https://api.totp.com.cn/v1</code></li>
+            </ul>
+        </li>
+        <li><strong>第四步</strong>：在下方的 Models 列表中，确保打开了你想使用的模型开关（例如 <code>gpt-4o</code> 或 <code>claude-3-5-sonnet</code>）。现在你就可以在代码里直接使用 Cmd+K / Ctrl+K 愉快地让 AI 写代码了！</li>
+    </ul>
+
+    <h3>2. VS Code / JetBrains - Continue 插件 (最强的开源代码助手)</h3>
+    <p style="font-size: 13px; color: #666;">如果你在 VS Code 或 PyCharm 里安装了优秀的 <code>Continue</code> 插件，可以点击插件底部的齿轮进入 <code>config.json</code>，将你的模型配置修改为如下 OpenAI 兼容格式：</p>
+    <div class="code-block">
+{
+  "models": [
+    {
+      "title": "TOTP - GPT-4o",
+      "provider": "openai",
+      "model": "gpt-4o",
+      "apiBase": "https://api.totp.com.cn/v1",
+      "apiKey": "你的sk-xxxx令牌"
+    },
+    {
+      "title": "TOTP - Claude 3.5",
+      "provider": "openai",
+      "model": "claude-3-5-sonnet",
+      "apiBase": "https://api.totp.com.cn/v1",
+      "apiKey": "你的sk-xxxx令牌"
+    }
+  ]
+}
+    </div>
+
+    <h3>3. Codex / 通用 OpenAI 补全插件 (如 Cline, Roo Code 等)</h3>
+    <ul>
+        <li>在任何支持自定义 Codex 或 OpenAI 规范的插件中，<strong>Provider / 服务商</strong> 均统一选择：<code>OpenAI</code>。</li>
+        <li><strong>Base URL / API URL</strong> 统一填写：<code>https://api.totp.com.cn/v1</code></li>
+        <li>由于本站完美兼容 OpenAI 的代码补全接口规范（Completion & Chat），任何开发插件都可以无缝接入，国内免代理享受超低延迟的代码生成体验。</li>
+    </ul>
+
+    <h2>四、关于计费与充值</h2>
+    <ul>
+        <li>本站采用极其透明的 Token 计费模式，您每次在聊天、写代码、或者让 AI 解释报错时发送和接收的文本都会被折算为算力额度。</li>
+        <li>您可以随时在系统的 <strong>[日志]</strong> 页面查看自己每一笔对话或代码生成的精确扣费金额。</li>
+        <li>如需充值，请前往 <strong>[充值]</strong> 页面通过在线支付获取，或者直接联系站长索取充值兑换码。</li>
+    </ul>
+
+    <div style="text-align: center; color: #999; font-size: 12px; margin-top: 5px; border-top: 1px dashed #eee; padding-top: 15px;">
+        TOTP 技术支持团队 © 2026 | 您的智能 AI 枢纽
+    </div>
+</div>
+
+</body>
+</html>
